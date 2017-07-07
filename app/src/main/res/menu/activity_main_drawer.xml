@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/imformation"
+            android:icon="@drawable/inf"
+            android:title="个人信息" />
+        <item
+            android:id="@+id/records"
+            android:icon="@drawable/viewlist"
+            android:title="标注记录" />
+        <item
+            android:id="@+id/guide"
+            android:icon="@drawable/service"
+            android:title="使用指南" />
+        <item
+            android:id="@+id/exit"
+            android:icon="@drawable/warning"
+            android:title="退出" />
+    </group>
+
+</menu>

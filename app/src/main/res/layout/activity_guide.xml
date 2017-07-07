@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.scy.myapplication.Guide">
+    <TextView
+        android:id="@+id/guide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="50dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:textSize="20dp"
+        android:text="1.每次任务有10张图片需要标识；\n2.您可以跳过不喜欢的图片，我们以后将减少推送此类的图片给您;\n3.每个标记之间用中文逗号隔开；\n4.为了更准确地给您推送感兴趣的图片，请在个人兴趣中选择您的兴趣领域。"/>
+
+
+
+</LinearLayout>

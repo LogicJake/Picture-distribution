@@ -1,0 +1,83 @@
+<ScrollView xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginBottom="20dp"
+    android:layout_marginRight="10dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity = "center_horizontal"
+        android:orientation = "vertical"
+        android:id = "@+id/content_frame"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:showIn="@layout/app_bar_main"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <ImageView
+            android:id="@+id/iv1"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/loding" />
+
+        <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:stretchColumns="0,1">
+            <TableRow>
+                <TextView
+                    android:id="@+id/count"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textSize="20dp" />
+
+                <com.varunest.sparkbutton.SparkButton
+                    android:id="@+id/haert"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_gravity="right"
+                    android:gravity="right"
+                    app:sparkbutton_activeImage="@drawable/ic_heart_on"
+                    app:sparkbutton_iconSize="40dp"
+                    app:sparkbutton_inActiveImage="@drawable/ic_heart_off" />
+            </TableRow>
+        </TableLayout>
+
+
+        <EditText
+            android:id="@+id/Tags"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="14dp"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:hint="请输入标签" />
+
+        <Button
+            android:id="@+id/comfirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="确认标签" />
+
+        <Button
+            android:id="@+id/next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="不喜欢 " />
+
+    </LinearLayout>
+</ScrollView>

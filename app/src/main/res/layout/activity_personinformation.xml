@@ -1,0 +1,286 @@
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:stretchColumns="0,1"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:id="@+id/pic"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@android:drawable/sym_def_app_icon">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/avatar"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_centerInParent="true"
+                android:src="@android:drawable/sym_def_app_icon"
+                app:civ_border_color="#FFFFFFFF"
+                app:civ_border_width="1dp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:background="@color/LightGrey"  />
+
+        <TableRow
+            android:clickable="true"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="18dp">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="用户名"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:gravity="right"
+                android:textSize="18dp" />
+        </TableRow>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:background="@color/LightGrey"  />
+        <TableRow
+            android:clickable="true"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="18dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textSize="18dp"
+                android:text="UID" />
+
+            <TextView
+                android:id="@+id/UID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:textSize="18dp"
+                android:gravity="right"
+                />
+        </TableRow>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="50px"
+            android:background="@color/LightGrey"  />
+        <TableRow
+            android:clickable="true"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="18dp"
+            android:id = "@+id/trtele">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textSize="18dp"
+                android:text="手机号" />
+
+            <TextView
+                android:id="@+id/tele"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:textSize="18dp"
+                android:gravity="right" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:textSize="20dp"
+                android:text=">"
+                android:gravity="right" />
+        </TableRow>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:background="@color/LightGrey"  />
+        <TableRow
+            android:clickable="true"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="18dp"
+            android:id = "@+id/trqq">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textSize="18dp"
+                android:text="QQ" />
+
+            <TextView
+                android:id="@+id/qq"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:textSize="18dp"
+                android:gravity="right"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:textSize="20dp"
+                android:text=">"
+                android:gravity="right" />
+        </TableRow>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:background="@color/LightGrey"  />
+        <TableRow
+            android:clickable="true"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="18dp"
+            android:id = "@+id/trsex">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textSize="18dp"
+                android:text="性别" />
+
+            <TextView
+                android:id="@+id/sex"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:textSize="18dp"
+                android:gravity="right"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:textSize="20dp"
+                android:text=">"
+                android:gravity="right" />
+        </TableRow>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="50px"
+            android:background="@color/LightGrey"  />
+        <TableRow
+            android:clickable="true"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="18dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textSize="18dp"
+                android:text="积分" />
+
+            <TextView
+                android:id="@+id/score"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:textSize="18dp"
+                android:gravity="right"
+                />
+
+        </TableRow>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:background="@color/LightGrey"  />
+        <TableRow
+            android:clickable="true"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="18dp"
+            android:id = "@+id/trsigh">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="个性签名"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/sigh"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:textSize="18dp"
+                android:gravity="left"
+                android:inputType="textMultiLine"
+                android:minLines="3"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:textSize="20dp"
+                android:text=">"
+                android:gravity="right" />
+        </TableRow>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:background="@color/LightGrey"  />
+        <TableRow
+            android:clickable="true"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="18dp"
+            android:id = "@+id/trhobby">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textSize="18dp"
+                android:text="兴趣" />
+
+            <TextView
+                android:id="@+id/hobby"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:textSize="18dp"
+                android:gravity="right"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:textSize="20dp"
+                android:text=">"
+                android:gravity="right" />
+        </TableRow>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:background="@color/LightGrey"  />
+        <Button
+            android:id="@+id/changepassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="修改密码"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
+    </TableLayout>
+</ScrollView>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+    <TextView
+        android:id="@+id/bt_load"
+        android:layout_height="45dp"
+        android:gravity="center"
+        android:layout_width="fill_parent"
+        android:clickable="true"
+        android:visibility="invisible"
+        android:background="@color/LightGrey"
+        android:text="点击加载更多" />
+    <ProgressBar
+        android:id="@+id/pg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:visibility="gone"
+        />
+    <TextView
+        android:layout_width="fill_parent"
+        android:id="@+id/finish"
+        android:gravity="center"
+        android:layout_height="40dp"
+        android:background="@color/LightGrey"
+        android:text="我也是有底线的"
+        android:textSize="12dp"
+        android:visibility="gone"/>
+
+</LinearLayout>

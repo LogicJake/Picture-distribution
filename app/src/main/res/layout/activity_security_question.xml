@@ -1,0 +1,75 @@
+<ScrollView xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp">
+        <TextView
+            android:textColor="#FF0000"
+            android:textSize="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tips:密保问题是您修改密码的唯一途径" />
+
+
+        <Spinner android:id="@+id/q1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp">
+        </Spinner>
+
+        <EditText
+            android:id="@+id/a1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入问题一答案"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:layout_marginBottom="12dp"/>
+
+
+        <Spinner
+            android:id="@+id/q2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp">
+        </Spinner>
+
+        <EditText
+            android:id="@+id/a2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入问题二答案"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:layout_marginBottom="12dp"/>
+
+        <Spinner android:id="@+id/q3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp">
+        </Spinner>
+
+        <EditText
+            android:id="@+id/a3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入问题三答案"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:layout_marginBottom="12dp"/>
+
+        <Button
+            android:id="@+id/sure"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="提交" />
+    </LinearLayout>
+
+</ScrollView>
