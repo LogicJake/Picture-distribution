@@ -277,7 +277,7 @@ public class NewsService {
     }
 
     public static JSONArray getimage(String token) {
-        JSONArray jsonObject = null;
+        JSONArray res = null;
         try {
             String path = rooturl+"index.php?_action=getImage&token="+token;;
             URL url = new URL(path);
@@ -310,12 +310,17 @@ public class NewsService {
                 is.close();
                 baos.close();
                 System.out.println(baos);
-                jsonObject = new JSONObject(baos.toString()).getJSONArray("data");
+                JSONObject jsonObject = null;
+                jsonObject = new JSONObject(baos.toString()).getJSONObject("data");
+                if(jsonObject.getInt("doneAll") == 1)
+                    res = new JSONArray();
+                else
+                    res = jsonObject.getJSONArray("img");
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return jsonObject;
+        return res;
     }
 
     public static boolean postSaveTag(String token, String image_id,String tag) {
