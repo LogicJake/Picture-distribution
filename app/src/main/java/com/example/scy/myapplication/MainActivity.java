@@ -21,15 +21,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.nostra13.universalimageloader.cache.memory.impl.UsingFreqLimitedMemoryCache;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
-import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
-
 import java.io.ByteArrayInputStream;
 import cn.pedant.SweetAlert.SweetAlertDialog;
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence;
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
+import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private Handler handler = new Handler(){
         public void handleMessage(Message msg) {
@@ -57,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         startActivity(intent);
                         finish();
                     }
+                    setReset();
                     break;
             }
         }
@@ -68,6 +66,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private SharedPreferences.Editor editor;
     private de.hdodenhof.circleimageview.CircleImageView avatar;
     private SweetAlertDialog pDialog;
+    public static final String ID_MAIN = "id_main";
+    public static final String ID_TASK = "id_task";
+    public static final String ID_TASK2 = "id_task2";
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -107,9 +108,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(intent);
             }
         });
+        presentShowcaseSequence();
 
         btn1.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 if(preferences.getInt("complete",-1000)== 0) {
@@ -234,5 +235,35 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             bitmap = BitmapFactory.decodeStream(byteArrayInputStream);
         }
         return bitmap;
+    }
+
+    private void presentShowcaseSequence() {
+        ShowcaseConfig config = new ShowcaseConfig();
+        config.setDelay(500);
+        MaterialShowcaseSequence sequence = new MaterialShowcaseSequence(this, ID_MAIN);
+        sequence.setConfig(config);
+        sequence.addSequenceItem(
+                new MaterialShowcaseView.Builder(this)
+                        .setTarget(btn1)
+                        .setDismissText("下一条")
+                        .setContentText("点我开始打标签任务")
+                        .withRectangleShape(true)
+                        .build()
+        );
+
+        sequence.addSequenceItem(
+                new MaterialShowcaseView.Builder(this)
+                        .setTarget(btn2)
+                        .setDismissText("结束教程")
+                        .setContentText("点我判断他人标签")
+                        .withRectangleShape(true)
+                        .build()
+        );
+        sequence.start();
+    }
+    public void setReset(){
+        MaterialShowcaseView.resetSingleUse(this, ID_MAIN);
+        MaterialShowcaseView.resetSingleUse(this, ID_TASK);
+        MaterialShowcaseView.resetSingleUse(this, ID_TASK2);
     }
 }

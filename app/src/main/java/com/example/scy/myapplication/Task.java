@@ -1,5 +1,4 @@
 package com.example.scy.myapplication;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -36,11 +35,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence;
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
+import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
 
+import static com.example.scy.myapplication.MainActivity.ID_TASK;
 import static com.example.scy.myapplication.NewsService.pic_root;
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
-
 public class Task extends AppCompatActivity {
     private Handler handler = new Handler(){
         public void handleMessage(Message msg) {
@@ -73,6 +75,7 @@ public class Task extends AppCompatActivity {
                             }
                         });
                     }
+                    presentShowcaseSequence();
                     break;
                 case 2:
                     if ((boolean)msg.obj)
@@ -170,7 +173,6 @@ public class Task extends AppCompatActivity {
                 .cacheInMemory(true)                               //启用内存缓存
                 .cacheOnDisk(true)                                 //启用外存缓存
                 .build();
-
         heart.setEventListener(new SparkEventListener(){
             @Override
             public void onEvent(ImageView button, boolean buttonState) {
@@ -311,5 +313,40 @@ public class Task extends AppCompatActivity {
             pDialog3.show();
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    private void presentShowcaseSequence() {
+        ShowcaseConfig config = new ShowcaseConfig();
+        config.setDelay(500);
+        MaterialShowcaseSequence sequence = new MaterialShowcaseSequence(this, ID_TASK);
+        sequence.setConfig(config);
+        sequence.addSequenceItem(count,"这是任务进度","下一条");
+        sequence.addSequenceItem(heart,"喜欢本图片就点亮爱心","下一条");
+        sequence.addSequenceItem(
+                new MaterialShowcaseView.Builder(this)
+                        .setTarget(Tags)
+                        .setDismissText("下一条")
+                        .setContentText("在此输入标签，不能为空")
+                        .withRectangleShape(true)
+                        .build()
+        );
+        sequence.addSequenceItem(
+                new MaterialShowcaseView.Builder(this)
+                        .setTarget(comfirm)
+                        .setDismissText("下一条")
+                        .setContentText("点击提交")
+                        .withRectangleShape(true)
+                        .build()
+        );
+        sequence.addSequenceItem(
+                new MaterialShowcaseView.Builder(this)
+                        .setTarget(next)
+                        .setDismissText("结束教程")
+                        .setContentText("不喜欢可以跳过")
+                        .withRectangleShape(true)
+                        .build()
+        );
+
+        sequence.start();
     }
 }

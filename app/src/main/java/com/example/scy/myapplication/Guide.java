@@ -4,8 +4,16 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
+
+import static com.example.scy.myapplication.MainActivity.ID_MAIN;
+import static com.example.scy.myapplication.MainActivity.ID_TASK;
+import static com.example.scy.myapplication.MainActivity.ID_TASK2;
 
 public class Guide extends AppCompatActivity {
 
@@ -19,7 +27,6 @@ public class Guide extends AppCompatActivity {
         }
     };
     private TextView guide;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

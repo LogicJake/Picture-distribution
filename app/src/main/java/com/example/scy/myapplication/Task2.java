@@ -33,7 +33,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence;
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
+import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
 
+import static com.example.scy.myapplication.MainActivity.ID_TASK;
+import static com.example.scy.myapplication.MainActivity.ID_TASK2;
 import static com.example.scy.myapplication.NewsService.pic_root;
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
@@ -71,6 +76,7 @@ public class Task2 extends AppCompatActivity {
                             }
                         });
                     }
+                    presentShowcaseSequence();
                     break;
                 case 2:
                     if ((int)msg.obj == 1)
@@ -171,7 +177,6 @@ public class Task2 extends AppCompatActivity {
                 .build();
 
         getPic();
-
         yes.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 yes.setEnabled(false);
@@ -291,5 +296,53 @@ public class Task2 extends AppCompatActivity {
             pDialog3.show();
         }
         return super.onKeyDown(keyCode, event);
+    }
+    private void presentShowcaseSequence() {
+        ShowcaseConfig config = new ShowcaseConfig();
+        config.setDelay(500);
+        MaterialShowcaseSequence sequence = new MaterialShowcaseSequence(this, ID_TASK2);
+        sequence.setConfig(config);
+        sequence.addSequenceItem(
+                new MaterialShowcaseView.Builder(this)
+                        .setTarget(count)
+                        .setDismissText("下一条")
+                        .setContentText("这是任务进度")
+                        .withRectangleShape(true)
+                        .build()
+        );
+        sequence.addSequenceItem(
+                new MaterialShowcaseView.Builder(this)
+                        .setTarget(tag)
+                        .setDismissText("下一条")
+                        .setContentText("这是需要判断的标签")
+                        .withRectangleShape(true)
+                        .build()
+        );
+        sequence.addSequenceItem(
+                new MaterialShowcaseView.Builder(this)
+                        .setTarget(yes)
+                        .setDismissText("下一条")
+                        .setContentText("标签符合图片就点我")
+                        .withRectangleShape(true)
+                        .build()
+        );
+        sequence.addSequenceItem(
+                new MaterialShowcaseView.Builder(this)
+                        .setTarget(no)
+                        .setDismissText("下一条")
+                        .setContentText("标签不符合图片就点我")
+                        .withRectangleShape(true)
+                        .build()
+        );
+        sequence.addSequenceItem(
+                new MaterialShowcaseView.Builder(this)
+                        .setTarget(unsure)
+                        .setDismissText("结束教程")
+                        .setContentText("把握不定就点我")
+                        .withRectangleShape(true)
+                        .build()
+        );
+
+        sequence.start();
     }
 }
