@@ -82,7 +82,7 @@ public class Personinformation extends AppCompatActivity {
                     String ssigh = null;
                     String aurl = null;
                     if (result == null)
-                        Toast.makeText(Personinformation.this, "获取数据失败！", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Personinformation.this, R.string.get_data_fail, Toast.LENGTH_SHORT).show();
                     else {
                         try {
                             stele = result.getString("phone_num");
@@ -114,11 +114,11 @@ public class Personinformation extends AppCompatActivity {
                         name.setText(user_name);
                         UID.setText(Integer.toString(id));
                         if (stele.equals("null"))
-                            tele.setText("未设置");
+                            tele.setText(R.string.no_set);
                         else
                             tele.setText(stele);
                         if (sqq.equals("null"))
-                            qq.setText("未设置");
+                            qq.setText(R.string.no_set);
                         else
                             qq.setText(sqq);
                         if (ssigh.equals("null"))
@@ -126,11 +126,11 @@ public class Personinformation extends AppCompatActivity {
                         else
                             sigh.setText(ssigh);
                         if (ssex == 0)
-                            sex.setText("男");
+                            sex.setText(R.string.man);
                         else if (ssex == 1)
-                            sex.setText("女");
+                            sex.setText(R.string.woman);
                         else if (ssex == -1)
-                            sex.setText("未设置");
+                            sex.setText(R.string.no_set);
                         score.setText(Integer.toString(sscore));
 
                     }
@@ -146,9 +146,9 @@ public class Personinformation extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     if (flag == 0)
-                        Toast.makeText(Personinformation.this, "修改失败！", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Personinformation.this, R.string.modify_fail, Toast.LENGTH_SHORT).show();
                     else if(flag == 1)
-                        Toast.makeText(Personinformation.this, "修改成功！", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Personinformation.this, R.string.modify_success, Toast.LENGTH_SHORT).show();
                         tele.setText(key);
                     break;
                 case 2:
@@ -161,9 +161,9 @@ public class Personinformation extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     if (flag == 0)
-                        Toast.makeText(Personinformation.this, "修改失败！", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Personinformation.this, R.string.modify_fail, Toast.LENGTH_SHORT).show();
                     else if(flag == 1) {
-                        Toast.makeText(Personinformation.this, "修改成功！", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Personinformation.this, R.string.modify_success, Toast.LENGTH_SHORT).show();
                         qq.setText(key);
                     }
                     break;
@@ -178,13 +178,13 @@ public class Personinformation extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     if (flag == 0)
-                        Toast.makeText(Personinformation.this, "修改失败！", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Personinformation.this, R.string.modify_fail, Toast.LENGTH_SHORT).show();
                     else if(flag == 1) {
-                        Toast.makeText(Personinformation.this, "修改成功！", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Personinformation.this, R.string.modify_success, Toast.LENGTH_SHORT).show();
                         if (rsex == 0)
-                            sex.setText("男");
+                            sex.setText(R.string.man);
                         else
-                            sex.setText("女");
+                            sex.setText(R.string.woman);
                     }
                     break;
                 case 4:
@@ -197,9 +197,9 @@ public class Personinformation extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     if (flag == 0)
-                        Toast.makeText(Personinformation.this, "修改失败！", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Personinformation.this, R.string.modify_fail, Toast.LENGTH_SHORT).show();
                     else if(flag == 1) {
-                        Toast.makeText(Personinformation.this, "修改成功！", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Personinformation.this, R.string.modify_success, Toast.LENGTH_SHORT).show();
                         sigh.setText(key);
                     }
                     break;
@@ -211,8 +211,8 @@ public class Personinformation extends AppCompatActivity {
                     JSONObject res = (JSONObject) msg.obj;
                     if (res == null) {
                         pDialog2.changeAlertType(SweetAlertDialog.ERROR_TYPE);
-                        pDialog2.setTitleText("ERROR");
-                        pDialog2.setContentText("上传到服务器失败");
+                        pDialog2.setTitleText(getString(R.string.ERROR));
+                        pDialog2.setContentText(getString(R.string.upload_fail));
                         pDialog2.setCancelable(true);
                         pDialog2.show();
                     }
@@ -238,8 +238,6 @@ public class Personinformation extends AppCompatActivity {
                                             View hView = navigationView.getHeaderView(0);
                                             avatar2 = (de.hdodenhof.circleimageview.CircleImageView) hView.findViewById(R.id.imageView); //更新侧边栏头像
                                             avatar2.setImageBitmap(loadedImage);
-                                            System.out.println("gengxinwanbi");
-
                                             pic.setBackground(new BitmapDrawable(newBitmap));
                                             pDialog2.cancel();
                                             if (loadedImage != null && !loadedImage.isRecycled()) {
@@ -256,30 +254,30 @@ public class Personinformation extends AppCompatActivity {
                         }
                         else if(status == 1){
                             pDialog2.changeAlertType(SweetAlertDialog.ERROR_TYPE);
-                            pDialog2.setTitleText("ERROR");
-                            pDialog2.setContentText("图片大小不能超过2MB");
+                            pDialog2.setTitleText(getString(R.string.ERROR));
+                            pDialog2.setContentText(getString(R.string.pic_big));
                             pDialog2.setCancelable(true);
                             pDialog2.show();
                         }
                         else if(status == 2) {
                             pDialog2.changeAlertType(SweetAlertDialog.ERROR_TYPE);
-                            pDialog2.setTitleText("ERROR");
-                            pDialog2.setContentText("文件上传发生错误");
+                            pDialog2.setTitleText(getString(R.string.ERROR));
+                            pDialog2.setContentText(getString(R.string.upload_file_fail));
                             pDialog2.setCancelable(true);
                             pDialog2.show();
                         }
                         else if(status == 3) {
                             pDialog2.changeAlertType(SweetAlertDialog.ERROR_TYPE);
-                            pDialog2.setTitleText("ERROR");
-                            pDialog2.setContentText("不支持的图片扩展名");
+                            pDialog2.setTitleText(getString(R.string.ERROR));
+                            pDialog2.setContentText(getString(R.string.pic_type_error));
                             pDialog2.setCancelable(true);
                             pDialog2.show();
                         }
                         else if(status == 404)
                         {
                             pDialog2.changeAlertType(SweetAlertDialog.ERROR_TYPE);
-                            pDialog2.setTitleText("ERROR");
-                            pDialog2.setContentText("无正确的文件上传");
+                            pDialog2.setTitleText(getString(R.string.ERROR));
+                            pDialog2.setContentText(getString(R.string.file_error));
                             pDialog2.setCancelable(true);
                             pDialog2.show();
 
@@ -299,12 +297,12 @@ public class Personinformation extends AppCompatActivity {
                             avatar2.setImageBitmap(newBitmap);
                             pDialog.cancel();
                         } else {
-                            Toast.makeText(Personinformation.this, "加载头像失败", Toast.LENGTH_SHORT);
+                            Toast.makeText(Personinformation.this, R.string.get_avator_fail, Toast.LENGTH_SHORT);
                             pDialog.cancel();
                         }
                     }
                     else {
-                        Toast.makeText(Personinformation.this, "加载头像失败", Toast.LENGTH_SHORT);
+                        Toast.makeText(Personinformation.this, R.string.get_avator_success, Toast.LENGTH_SHORT);
                         pDialog.cancel();
                     }
                     break;
@@ -350,7 +348,7 @@ public class Personinformation extends AppCompatActivity {
         avatar = (ImageView)findViewById(R.id.avatar);
         pDialog = new SweetAlertDialog(Personinformation.this, SweetAlertDialog.PROGRESS_TYPE);
         pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
-        pDialog.setTitleText("获取信息中");
+        pDialog.setTitleText(getString(R.string.getting_data));
         pDialog.setCancelable(false);
         pDialog.show();
         trtele = (TableRow)findViewById(R.id.trtele);
@@ -401,8 +399,8 @@ public class Personinformation extends AppCompatActivity {
                 et.setInputType(InputType.TYPE_CLASS_PHONE);
                 et.setText(tele.getText());
                 builder = new android.app.AlertDialog.Builder(Personinformation.this);
-                builder.setTitle("修改手机号码");
-                builder.setPositiveButton("提交", new DialogInterface.OnClickListener() {
+                builder.setTitle(R.string.modfy_phone);
+                builder.setPositiveButton(R.string.submit, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         try {
@@ -425,7 +423,7 @@ public class Personinformation extends AppCompatActivity {
                     }
                 });
                 builder.setView(et);
-                builder.setNegativeButton("取消", null);
+                builder.setNegativeButton(R.string.cancel, null);
                 builder.create().show();
             }
         });
@@ -438,8 +436,8 @@ public class Personinformation extends AppCompatActivity {
                 et.setInputType(InputType.TYPE_CLASS_NUMBER);
                 et.setText(qq.getText());
                 builder = new android.app.AlertDialog.Builder(Personinformation.this);
-                builder.setTitle("修改QQ号码");
-                builder.setPositiveButton("提交", new DialogInterface.OnClickListener() {
+                builder.setTitle(R.string.modify_qq);
+                builder.setPositiveButton(R.string.submit, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         try {
@@ -462,7 +460,7 @@ public class Personinformation extends AppCompatActivity {
                     }
                 });
                 builder.setView(et);
-                builder.setNegativeButton("取消", null);
+                builder.setNegativeButton(R.string.cancel, null);
                 builder.create().show();
             }
         });
@@ -473,14 +471,14 @@ public class Personinformation extends AppCompatActivity {
 
                 final android.app.AlertDialog.Builder builder;
                 builder = new android.app.AlertDialog.Builder(Personinformation.this);
-                builder.setTitle("您的性别是？");
+                builder.setTitle(R.string.modify_sex);
                 builder.setSingleChoiceItems(single,3, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         singleChoice = single[which];
                     }
                 });
-                builder.setPositiveButton("提交", new DialogInterface.OnClickListener() {
+                builder.setPositiveButton(R.string.submit, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         try {
@@ -503,7 +501,7 @@ public class Personinformation extends AppCompatActivity {
 
                     }
                 });
-                builder.setNegativeButton("取消", null);
+                builder.setNegativeButton(R.string.cancel, null);
                 builder.create().show();
             }
         });
@@ -520,9 +518,9 @@ public class Personinformation extends AppCompatActivity {
                 et.setSingleLine(false);
                 et.setMovementMethod(ScrollingMovementMethod.getInstance());
                 builder = new android.app.AlertDialog.Builder(Personinformation.this);
-                builder.setTitle("修改个性签名(50字符以内)");
+                builder.setTitle(R.string.modify_sign);
                 et.setText(sigh.getText());
-                builder.setPositiveButton("提交", new DialogInterface.OnClickListener() {
+                builder.setPositiveButton(R.string.submit, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         try {
@@ -545,7 +543,7 @@ public class Personinformation extends AppCompatActivity {
                     }
                 });
                 builder.setView(et);
-                builder.setNegativeButton("取消", null);
+                builder.setNegativeButton(R.string.cancel, null);
                 builder.create().show();
             }
         });
@@ -628,7 +626,7 @@ public class Personinformation extends AppCompatActivity {
         public void onHanlderSuccess(int i, List<PhotoInfo> list) {
             pDialog2 = new SweetAlertDialog(Personinformation.this, SweetAlertDialog.PROGRESS_TYPE);
             pDialog2.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
-            pDialog2.setTitleText("上传头像中");
+            pDialog2.setTitleText(getString(R.string.uploading_avator));
             pDialog2.setCancelable(false);
             pDialog2.show();
             final String filepath = list.get(0).getPhotoPath();
@@ -652,7 +650,7 @@ public class Personinformation extends AppCompatActivity {
         }
         @Override
         public void onHanlderFailure(int i, String s) {
-            Toast.makeText(Personinformation.this,"设置头像失败",Toast.LENGTH_SHORT);
+            Toast.makeText(Personinformation.this, R.string.set_avator_fail,Toast.LENGTH_SHORT);
         }
     };
     public void saveBitmapToSharedPreferences(Bitmap bitmap){

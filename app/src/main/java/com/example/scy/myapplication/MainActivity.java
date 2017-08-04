@@ -40,16 +40,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     if((int)msg.obj == 0) {
                         editor.clear();
                         editor.commit();
-                        Toast.makeText(MainActivity.this, "退出成功", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, R.string.exit_success, Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(MainActivity.this, Login.class);            //转到登陆界面
                         startActivity(intent);
                         finish();
                     }
                     else {
-                        Toast.makeText(MainActivity.this, "退出账号失败", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, R.string.exit_fail, Toast.LENGTH_SHORT).show();
                         editor.clear();
                         editor.commit();
-                        Toast.makeText(MainActivity.this, "退出成功", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(MainActivity.this, Login.class);            //转到登陆界面
                         startActivity(intent);
                         finish();
@@ -59,8 +58,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         }
     };
-    private Button btn1;
-    private Button btn2;
+    private Button bt_task1;
+    private Button bt_task2;
     private TextView guide;
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
@@ -81,8 +80,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
 
         guide = (TextView)findViewById(R.id.guide) ;
-        btn1 = (Button)findViewById(R.id.starttask1);
-        btn2 = (Button)findViewById(R.id.starttask2);
+        bt_task1 = (Button)findViewById(R.id.starttask1);
+        bt_task2 = (Button)findViewById(R.id.starttask2);
         preferences = getSharedPreferences("UserInfo", MODE_PRIVATE);
         editor = preferences.edit();
         getguide();
@@ -110,16 +109,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
         presentShowcaseSequence();
 
-        btn1.setOnClickListener(new View.OnClickListener() {
+        bt_task1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(preferences.getInt("complete",-1000)== 0) {
                     pDialog = new SweetAlertDialog(MainActivity.this, SweetAlertDialog.ERROR_TYPE);
                     pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
-                    pDialog.setTitleText("ERROR");
-                    pDialog.setContentText("请先勾选个人兴趣");
-                    pDialog.setConfirmText("现在就去");
-                    pDialog.setCancelText("稍后再去");
+                    pDialog.setTitleText(getString(R.string.ERROR));
+                    pDialog.setContentText(getString(R.string.first_choose_interest));
+                    pDialog.setConfirmText(getString(R.string.now_action));
+                    pDialog.setCancelText(getString(R.string.wait_action));
                     pDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                         @Override
                         public void onClick(SweetAlertDialog sweetAlertDialog) {
@@ -143,7 +142,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
             }
         });
-        btn2.setOnClickListener(new View.OnClickListener() {
+        bt_task2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, Task2.class);
@@ -158,26 +157,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.addCategory(Intent.CATEGORY_HOME);
         startActivity(intent);
-    }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -244,18 +223,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         sequence.setConfig(config);
         sequence.addSequenceItem(
                 new MaterialShowcaseView.Builder(this)
-                        .setTarget(btn1)
-                        .setDismissText("下一条")
-                        .setContentText("点我开始打标签任务")
+                        .setTarget(bt_task1)
+                        .setDismissText(getString(R.string.next_tip))
+                        .setContentText(getString(R.string.tip1))
                         .withRectangleShape(true)
                         .build()
         );
 
         sequence.addSequenceItem(
                 new MaterialShowcaseView.Builder(this)
-                        .setTarget(btn2)
-                        .setDismissText("结束教程")
-                        .setContentText("点我判断他人标签")
+                        .setTarget(bt_task2)
+                        .setDismissText(getString(R.string.finish_guide))
+                        .setContentText(getString(R.string.tip2))
                         .withRectangleShape(true)
                         .build()
         );

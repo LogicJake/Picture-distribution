@@ -40,7 +40,7 @@ public class Sign_up extends AppCompatActivity {
             JSONObject result = (JSONObject) msg.obj;
             if (result == null){
                 pDialog.cancel();
-                Toast.makeText(Sign_up.this, "服务器连接错误", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Sign_up.this, R.string.server_error, Toast.LENGTH_SHORT).show();
             }
             else {
                 int status = 0;
@@ -59,18 +59,18 @@ public class Sign_up extends AppCompatActivity {
                     pDialog.cancel();
                     editor.putString("token", token);
                     editor.commit();
-                    Toast.makeText(Sign_up.this, "注册成功", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Sign_up.this, R.string.sign_up_success, Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(Sign_up.this, SecurityQuestion.class);
                     startActivity(intent);
                     finish();
                 } else if(status == 2) {
                         pDialog.cancel();
-                        Toast.makeText(Sign_up.this, "已存在该用户名", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Sign_up.this, R.string.name_has_exist, Toast.LENGTH_SHORT).show();
                 }
             }
         }
     };
-    private Button bt1;
+    private Button bt_sign_up;
     private EditText editName, editPassword, editPassword2;
     private SweetAlertDialog pDialog;
     private SharedPreferences preferences;
@@ -84,12 +84,12 @@ public class Sign_up extends AppCompatActivity {
         editPassword2 = (EditText)findViewById(R.id.password2);
         preferences = getSharedPreferences("UserInfo", MODE_PRIVATE);
         editor = preferences.edit();
-        bt1 = (Button)findViewById(R.id.signup);
-        bt1.setOnClickListener(new View.OnClickListener() {
+        bt_sign_up = (Button)findViewById(R.id.signup);
+        bt_sign_up.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 pDialog = new SweetAlertDialog(Sign_up.this, SweetAlertDialog.PROGRESS_TYPE);
                 pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
-                pDialog.setTitleText("提交信息中");
+                pDialog.setTitleText(getString(R.string.pushing_info));
                 pDialog.setCancelable(false);
                 pDialog.show();
                 try {
@@ -98,26 +98,26 @@ public class Sign_up extends AppCompatActivity {
                     String password2 = editPassword2.getText().toString();
                     if(!password.equals(password2)){             //两次密码不一致
                         pDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
-                        pDialog.setTitleText("ERROR");
-                        pDialog.setContentText("两次密码不一致");
-                        pDialog.setConfirmText("OK");
+                        pDialog.setTitleText(getString(R.string.ERROR));
+                        pDialog.setContentText(getString(R.string.pass_no_same));
+                        pDialog.setConfirmText(getString(R.string.OK));
                         pDialog.setCancelable(false);
                         pDialog.show();
                     }
                     else {
                         if (name.length() == 0) {
                             pDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
-                            pDialog.setTitleText("ERROR");
-                            pDialog.setContentText("用户名不能为空");
-                            pDialog.setConfirmText("OK");
+                            pDialog.setTitleText(getString(R.string.ERROR));
+                            pDialog.setContentText(getString(R.string.name_no_empty));
+                            pDialog.setConfirmText(getString(R.string.OK));
                             pDialog.setCancelable(false);
                             pDialog.show();
                         } else {
                             if (password.length() < 8) {
                                 pDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
-                                pDialog.setTitleText("ERROR");
-                                pDialog.setContentText("密码长度至少为8");
-                                pDialog.setConfirmText("OK");
+                                pDialog.setTitleText(getString(R.string.ERROR));
+                                pDialog.setContentText(getString(R.string.pass_length_short));
+                                pDialog.setConfirmText(getString(R.string.OK));
                                 pDialog.setCancelable(false);
                                 pDialog.show();
                             } else {
@@ -137,9 +137,9 @@ public class Sign_up extends AppCompatActivity {
                                     }).start();
                                 } else {
                                     pDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
-                                    pDialog.setTitleText("ERROR");
-                                    pDialog.setContentText("密码必须且只能由数字和字母组成");
-                                    pDialog.setConfirmText("OK");
+                                    pDialog.setTitleText(getString(R.string.ERROR));
+                                    pDialog.setContentText(getString(R.string.pass_format_error));
+                                    pDialog.setConfirmText(getString(R.string.OK));
                                     pDialog.setCancelable(false);
                                     pDialog.show();
                                 }
@@ -150,31 +150,11 @@ public class Sign_up extends AppCompatActivity {
             }
         });
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.sign_up, menu);
-        return true;
-    }
-
     public boolean onKeyDown(int keyCode, KeyEvent event)
     {
         if(keyCode == KeyEvent.KEYCODE_BACK){
             this.finish();
         }
         return super.onKeyDown(keyCode, event);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 }

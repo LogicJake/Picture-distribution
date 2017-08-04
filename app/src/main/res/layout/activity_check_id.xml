@@ -51,6 +51,6 @@
         android:id="@+id/sure"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="提交" />
+        android:text="@string/submit" />
 
 </LinearLayout>

@@ -48,21 +48,21 @@
             android:id="@+id/yes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="正确" />
+            android:text="@string/right" />
 
         <Button
             android:id="@+id/no"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="错误 " />
+            android:text="@string/error" />
 
         <Button
             android:id="@+id/unsure"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="不确定" />
+            android:text="@string/unsure" />
 
     </LinearLayout>
 </ScrollView>

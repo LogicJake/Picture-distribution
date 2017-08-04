@@ -52,7 +52,7 @@ public class Favourite extends AppCompatActivity {
                 case 0:
                     JSONArray res = (JSONArray)msg.obj;
                     if (res == null)
-                        Toast.makeText(Favourite.this,"连接服务器失败",Toast.LENGTH_SHORT);
+                        Toast.makeText(Favourite.this,R.string.server_error,Toast.LENGTH_SHORT);
                     else {
                         for (int i = 0; i < res.length(); i++) {
                             try {
@@ -76,7 +76,7 @@ public class Favourite extends AppCompatActivity {
                             checkBoxs.add(cb);
                         }
                         bt = new Button(Favourite.this);
-                        bt.setText("提交");
+                        bt.setText(R.string.submit);
                         ly.addView(bt);
                         bt.setOnClickListener(new View.OnClickListener() {
                             public void onClick(View v) {
@@ -101,9 +101,9 @@ public class Favourite extends AppCompatActivity {
                     break;
                 case 1:
                     if (msg.obj == null || (Boolean) msg.obj!=true)
-                        Toast.makeText(Favourite.this,"提交失败",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Favourite.this,R.string.submit_fail,Toast.LENGTH_SHORT).show();
                     else
-                        Toast.makeText(Favourite.this,"提交成功",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Favourite.this,R.string.submit_success,Toast.LENGTH_SHORT).show();
                     break;
 
             }
@@ -127,9 +127,9 @@ public class Favourite extends AppCompatActivity {
         pDialog = new SweetAlertDialog(Favourite.this, SweetAlertDialog.WARNING_TYPE);
         pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
         pDialog.setTitleText("Tips");
-        pDialog.setContentText("为了更好地向您推送图片，请勾选您感兴趣的领域");
+        pDialog.setContentText(getString(R.string.interest_tip));
         pDialog.setCancelable(false);
-        pDialog.setConfirmText("OK");
+        pDialog.setConfirmText(getString(R.string.OK));
         pDialog.show();
     }
 
@@ -163,23 +163,5 @@ public class Favourite extends AppCompatActivity {
                 handler.sendMessage(msg);
             }
         }).start();
-    }
-
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.favourite, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 }

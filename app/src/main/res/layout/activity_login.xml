@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="请输入用户名"
+            android:hint="@string/enter_name"
             android:singleLine="true"
             android:textSize="14dp" />
 
@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:digits="0123456789abcdefghigklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-            android:hint="请输入密码"
+            android:hint="@string/enter_password"
             android:maxLines="1"
             android:textSize="14dp" />
 
@@ -65,7 +65,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="false"
-            android:text="自动登陆" />
+            android:text="@string/auto_login" />
     </LinearLayout>
 
     <LinearLayout
@@ -77,20 +77,20 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="登陆" />
+            android:text="@string/login" />
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/sign_up"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="注册" />
+            android:text="@string/sign_up" />
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/forget_pass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="忘记密码" />
+            android:text="@string/forget_pass" />
 
     </LinearLayout>
 

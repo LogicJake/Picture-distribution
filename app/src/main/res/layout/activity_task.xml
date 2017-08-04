@@ -64,20 +64,20 @@
             android:textSize="14dp"
             android:maxLines="1"
             android:singleLine="true"
-            android:hint="请输入标签" />
+            android:hint="@string/enter_tips" />
 
         <Button
             android:id="@+id/comfirm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="确认标签" />
+            android:text="@string/comfire_tips" />
 
         <Button
             android:id="@+id/next"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="不喜欢 " />
+            android:text="@string/dislike" />
 
     </LinearLayout>
 </ScrollView>

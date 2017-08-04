@@ -42,7 +42,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="用户名"
+                android:text="@string/user_name"
                 android:textSize="18dp" />
 
             <TextView
@@ -66,7 +66,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:textSize="18dp"
-                android:text="UID" />
+                android:text="@string/uid" />
 
             <TextView
                 android:id="@+id/UID"
@@ -81,34 +81,39 @@
             android:layout_width="fill_parent"
             android:layout_height="50px"
             android:background="@color/LightGrey"  />
+
         <TableRow
-            android:clickable="true"
-            android:layout_marginTop="18dp"
+            android:id="@+id/trtele"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_marginBottom="18dp"
-            android:id = "@+id/trtele">
+            android:layout_marginTop="18dp"
+            android:clickable="true">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:textSize="18dp"
-                android:text="手机号" />
+                android:text="@string/phone"
+                android:textSize="18dp" />
 
             <TextView
                 android:id="@+id/tele"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
-                android:textSize="18dp"
-                android:gravity="right" />
+                android:gravity="right"
+                android:textSize="18dp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
-                android:textSize="20dp"
+                android:gravity="right"
                 android:text=">"
-                android:gravity="right" />
+                android:textSize="20dp" />
         </TableRow>
+
         <View
             android:layout_width="fill_parent"
             android:layout_height="1px"
@@ -123,7 +128,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:textSize="18dp"
-                android:text="QQ" />
+                android:text="@string/qq" />
 
             <TextView
                 android:id="@+id/qq"
@@ -156,7 +161,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:textSize="18dp"
-                android:text="性别" />
+                android:text="@string/sex" />
 
             <TextView
                 android:id="@+id/sex"
@@ -188,7 +193,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:textSize="18dp"
-                android:text="积分" />
+                android:text="@string/score" />
 
             <TextView
                 android:id="@+id/score"
@@ -211,10 +216,11 @@
             android:id = "@+id/trsigh">
 
             <TextView
+                android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="个性签名"
+                android:text="@string/sign"
                 android:textSize="18dp" />
 
             <TextView
@@ -251,7 +257,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:textSize="18dp"
-                android:text="兴趣" />
+                android:text="@string/hobby" />
 
             <TextView
                 android:id="@+id/hobby"
@@ -278,7 +284,7 @@
             android:id="@+id/changepassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="修改密码"
+            android:text="@string/modify_pass"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"/>

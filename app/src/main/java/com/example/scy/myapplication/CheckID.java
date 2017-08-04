@@ -44,7 +44,7 @@ public class CheckID extends AppCompatActivity {
                     int res1 = (int)msg.obj;
                     if(res1 == -1) {
                         pDialog.cancel();
-                        Toast.makeText(CheckID.this, "连接服务器失败", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CheckID.this, R.string.server_error, Toast.LENGTH_SHORT).show();
                     }
                     else if (res1 == 1)
                     {
@@ -55,7 +55,7 @@ public class CheckID extends AppCompatActivity {
                     }
                     else if (res1 == 0){
                         pDialog.cancel();
-                        Toast.makeText(CheckID.this,"回答错误",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CheckID.this, R.string.wrong_ans,Toast.LENGTH_SHORT).show();
                     }
                     break;
             }
@@ -86,7 +86,7 @@ public class CheckID extends AppCompatActivity {
             public void onClick(View v) {
                 pDialog = new SweetAlertDialog(CheckID.this, SweetAlertDialog.PROGRESS_TYPE);
                 pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
-                pDialog.setTitleText("验证中");
+                pDialog.setTitleText(getString(R.string.judging));
                 pDialog.setCancelable(false);
                 pDialog.show();
                 new Thread(new Runnable() {

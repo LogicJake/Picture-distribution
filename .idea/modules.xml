@@ -5,8 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/MyApplication.iml" filepath="$PROJECT_DIR$/MyApplication.iml" />
       <module fileurl="file://$PROJECT_DIR$/Picture-distribution.iml" filepath="$PROJECT_DIR$/Picture-distribution.iml" />
       <module fileurl="file://$PROJECT_DIR$/StickyListLibrary/StickyListLibrary.iml" filepath="$PROJECT_DIR$/StickyListLibrary/StickyListLibrary.iml" />
-      <module fileurl="file://$PROJECT_DIR$/StickyListLibrary/StickyListLibrary.iml" filepath="$PROJECT_DIR$/StickyListLibrary/StickyListLibrary.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

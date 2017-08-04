@@ -62,8 +62,8 @@ public class Task extends AppCompatActivity {
                     }
                     else if ((int)msg.obj == -1){
                         pDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
-                        pDialog.setTitleText("ERROR");
-                        pDialog.setContentText("获取任务失败");
+                        pDialog.setTitleText(getString(R.string.ERROR));
+                        pDialog.setContentText(getString(R.string.get_task_fail));
                         pDialog.setCancelable(false);
                         pDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                             @Override
@@ -94,10 +94,10 @@ public class Task extends AppCompatActivity {
                             next.setEnabled(FALSE);
                             pDialog3 = new SweetAlertDialog(Task.this, SweetAlertDialog.SUCCESS_TYPE);
                             pDialog3.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
-                            pDialog3.setTitleText("SUCCESS");
-                            pDialog3.setContentText("任务完成");
+                            pDialog3.setTitleText(getString(R.string.SUCCESS));
+                            pDialog3.setContentText(getString(R.string.task_finish));
                             pDialog3.setCancelable(false);
-                            pDialog3.setConfirmText("OK");
+                            pDialog3.setConfirmText(getString(R.string.OK));
                             pDialog3.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                 @Override
                                 public void onClick(SweetAlertDialog sweetAlertDialog) {
@@ -112,7 +112,7 @@ public class Task extends AppCompatActivity {
                     }
                     else
                     {
-                        Toast.makeText(Task.this, "提交失败", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Task.this, R.string.submit_fail, Toast.LENGTH_SHORT).show();
                         comfirm.setEnabled(TRUE);
                         next.setEnabled(TRUE);
                     }
@@ -122,8 +122,8 @@ public class Task extends AppCompatActivity {
                     break;
                 case 4:
                     pDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
-                    pDialog.setTitleText("ERROR");
-                    pDialog.setContentText("暂时没有此类任务");
+                    pDialog.setTitleText(getString(R.string.ERROR));
+                    pDialog.setContentText(getString(R.string.no_tasks));
                     pDialog.setCancelable(false);
                     pDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                         @Override
@@ -192,10 +192,10 @@ public class Task extends AppCompatActivity {
                 {
                     pDialog3 = new SweetAlertDialog(Task.this, SweetAlertDialog.WARNING_TYPE);
                     pDialog3.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
-                    pDialog3.setTitleText("ERROR");
-                    pDialog3.setContentText("标签不能为空，但你可以选择跳过");
+                    pDialog3.setTitleText(getString(R.string.ERROR));
+                    pDialog3.setContentText(getString(R.string.tag_no_empty));
                     pDialog3.setCancelable(false);
-                    pDialog3.setConfirmText("OK");
+                    pDialog3.setConfirmText(getString(R.string.OK));
                     pDialog3.show();
                     comfirm.setEnabled(TRUE);
                     next.setEnabled(TRUE);
@@ -216,7 +216,7 @@ public class Task extends AppCompatActivity {
     public void getPic(){
         pDialog = new SweetAlertDialog(Task.this, SweetAlertDialog.PROGRESS_TYPE);
         pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
-        pDialog.setTitleText("加载任务中");
+        pDialog.setTitleText(getString(R.string.getting_task));
         pDialog.setCancelable(false);
         pDialog.show();
         try {
@@ -306,10 +306,10 @@ public class Task extends AppCompatActivity {
         if(keyCode == KeyEvent.KEYCODE_BACK){
             pDialog3 = new SweetAlertDialog(Task.this, SweetAlertDialog.WARNING_TYPE);
             pDialog3.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
-            pDialog3.setTitleText("ERROR");
-            pDialog3.setContentText("不能中途退出任务");
+            pDialog3.setTitleText(getString(R.string.ERROR));
+            pDialog3.setContentText(getString(R.string.no_exit_task));
             pDialog3.setCancelable(false);
-            pDialog3.setConfirmText("OK");
+            pDialog3.setConfirmText(getString(R.string.OK));
             pDialog3.show();
         }
         return super.onKeyDown(keyCode, event);
@@ -320,33 +320,32 @@ public class Task extends AppCompatActivity {
         config.setDelay(500);
         MaterialShowcaseSequence sequence = new MaterialShowcaseSequence(this, ID_TASK);
         sequence.setConfig(config);
-        sequence.addSequenceItem(count,"这是任务进度","下一条");
-        sequence.addSequenceItem(heart,"喜欢本图片就点亮爱心","下一条");
+        sequence.addSequenceItem(count,getString(R.string.tip3),getString(R.string.next_tip));
+        sequence.addSequenceItem(heart,getString(R.string.tip4),getString(R.string.next_tip));
         sequence.addSequenceItem(
                 new MaterialShowcaseView.Builder(this)
                         .setTarget(Tags)
-                        .setDismissText("下一条")
-                        .setContentText("在此输入标签，不能为空")
+                        .setDismissText(getString(R.string.next_tip))
+                        .setContentText(getString(R.string.tip5))
                         .withRectangleShape(true)
                         .build()
         );
         sequence.addSequenceItem(
                 new MaterialShowcaseView.Builder(this)
                         .setTarget(comfirm)
-                        .setDismissText("下一条")
-                        .setContentText("点击提交")
+                        .setDismissText(getString(R.string.next_tip))
+                        .setContentText(getString(R.string.tip6))
                         .withRectangleShape(true)
                         .build()
         );
         sequence.addSequenceItem(
                 new MaterialShowcaseView.Builder(this)
                         .setTarget(next)
-                        .setDismissText("结束教程")
-                        .setContentText("不喜欢可以跳过")
+                        .setDismissText(getString(R.string.finish_guide))
+                        .setContentText(getString(R.string.tip7))
                         .withRectangleShape(true)
                         .build()
         );
-
         sequence.start();
     }
 }

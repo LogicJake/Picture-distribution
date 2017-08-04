@@ -33,7 +33,7 @@ public class SecurityQuestion extends AppCompatActivity {
                     JSONObject temp ;
                     if (res == null) {
                         pDialog2.cancel();
-                        Toast.makeText(SecurityQuestion.this, "连接服务器失败", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SecurityQuestion.this, R.string.server_error, Toast.LENGTH_SHORT).show();
                     }
                     else {
                         try {
@@ -73,20 +73,20 @@ public class SecurityQuestion extends AppCompatActivity {
                     int res1 = (int)msg.obj;
                     if (res1 == -1)
                     {
-                        Toast.makeText(SecurityQuestion.this,"连接服务器失败",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SecurityQuestion.this,R.string.server_error,Toast.LENGTH_SHORT).show();
                         pDialog.cancel();
                     }
                     else if (res1==1)
                     {
                         pDialog.cancel();
-                        Toast.makeText(SecurityQuestion.this,"提交成功",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SecurityQuestion.this,R.string.submit_success,Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(SecurityQuestion.this,Login.class);
                         startActivity(intent);
                         finish();
                     }
                     else if (res1 == 2)
                     {
-                        Toast.makeText(SecurityQuestion.this,"请勿重复设置密保问题",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SecurityQuestion.this, R.string.squestion_exist,Toast.LENGTH_SHORT).show();
                         pDialog.cancel();
                     }
                     break;
@@ -114,7 +114,7 @@ public class SecurityQuestion extends AppCompatActivity {
         setContentView(R.layout.activity_security_question);
         pDialog2 = new SweetAlertDialog(SecurityQuestion.this, SweetAlertDialog.PROGRESS_TYPE);
         pDialog2.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
-        pDialog2.setTitleText("加载页面中");
+        pDialog2.setTitleText(getString(R.string.getting_page));
         pDialog2.setCancelable(false);
         pDialog2.show();
         preferences = getSharedPreferences("UserInfo", MODE_PRIVATE);
@@ -129,18 +129,18 @@ public class SecurityQuestion extends AppCompatActivity {
         sure.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if(((String) spinner1.getSelectedItem()).equals("问题一")||((String) spinner2.getSelectedItem()).equals("问题二")||((String) spinner3.getSelectedItem()).equals("问题三"))
-                    Toast.makeText(SecurityQuestion.this,"问题不能为空",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SecurityQuestion.this, R.string.ques_no_empty,Toast.LENGTH_SHORT).show();
                 else
                 {
                     if ((a1.getText().toString().length()) == 0||(a2.getText().toString().length())==0||(a3.getText().toString().length())==0)
-                        Toast.makeText(SecurityQuestion.this,"答案不能为空",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SecurityQuestion.this, R.string.ans_no_empty,Toast.LENGTH_SHORT).show();
                     else {
                         if ((((String) spinner1.getSelectedItem()) == ((String) spinner2.getSelectedItem())) || (((String) spinner1.getSelectedItem()) == ((String) spinner3.getSelectedItem())) || (((String) spinner2.getSelectedItem()) == ((String) spinner3.getSelectedItem()))) {
-                            Toast.makeText(SecurityQuestion.this, "问题不能一样", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SecurityQuestion.this, R.string.que_no_same, Toast.LENGTH_SHORT).show();
                         } else {
                             pDialog = new SweetAlertDialog(SecurityQuestion.this, SweetAlertDialog.PROGRESS_TYPE);
                             pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
-                            pDialog.setTitleText("提交信息中");
+                            pDialog.setTitleText(getString(R.string.pushing_info));
                             pDialog.setCancelable(false);
                             pDialog.show();
                             final List<String> reslist = new ArrayList<String>();
@@ -190,10 +190,10 @@ public class SecurityQuestion extends AppCompatActivity {
         if(keyCode == KeyEvent.KEYCODE_BACK){
             pDialog3 = new SweetAlertDialog(SecurityQuestion.this, SweetAlertDialog.WARNING_TYPE);
             pDialog3.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
-            pDialog3.setTitleText("ERROR");
-            pDialog3.setContentText("请先设置密保");
+            pDialog3.setTitleText(getString(R.string.ERROR));
+            pDialog3.setContentText(getString(R.string.set_sques));
             pDialog3.setCancelable(false);
-            pDialog3.setConfirmText("OK");
+            pDialog3.setConfirmText(getString(R.string.OK));
             pDialog3.show();
         }
         return super.onKeyDown(keyCode, event);

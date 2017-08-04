@@ -21,12 +21,12 @@ public class ResetPssword extends AppCompatActivity {
         public void handleMessage(Message msg) {
             if ((Boolean)msg.obj == true){
                 pDialog.cancel();
-                Toast.makeText(ResetPssword.this,"修改成功",Toast.LENGTH_SHORT).show();
+                Toast.makeText(ResetPssword.this,R.string.modify_success,Toast.LENGTH_SHORT).show();
                 finish();
             }
             else {
                 pDialog.cancel();
-                Toast.makeText(ResetPssword.this,"修改失败",Toast.LENGTH_SHORT).show();
+                Toast.makeText(ResetPssword.this,R.string.modify_fail,Toast.LENGTH_SHORT).show();
             }
         }
     };
@@ -50,16 +50,16 @@ public class ResetPssword extends AppCompatActivity {
                 final String str1 = pass1.getText().toString();
                 String str2 = pass2.getText().toString();
                 if (!str1.equals(str2))
-                    Toast.makeText(ResetPssword.this,"两次密码不一样",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ResetPssword.this,R.string.pass_no_same,Toast.LENGTH_SHORT).show();
                 else {
                     if (str1.length() < 8) {
-                        Toast.makeText(ResetPssword.this, "密码长度至少为8", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ResetPssword.this, R.string.pass_length_short, Toast.LENGTH_SHORT).show();
                     }
                     else {
                         if (str1.matches("^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]{6,20})$")) {
                             pDialog = new SweetAlertDialog(ResetPssword.this, SweetAlertDialog.PROGRESS_TYPE);
                             pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
-                            pDialog.setTitleText("提交信息中");
+                            pDialog.setTitleText(getString(R.string.pushing_info));
                             pDialog.setCancelable(false);
                             pDialog.show();
                             new Thread(new Runnable() {
@@ -73,10 +73,9 @@ public class ResetPssword extends AppCompatActivity {
                             }).start();
                         }
                         else
-                            Toast.makeText(ResetPssword.this, "密码必须且只能由数字和字母组成", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ResetPssword.this, R.string.pass_format_error, Toast.LENGTH_SHORT).show();
                     }
                 }
-
             }
         });
     }

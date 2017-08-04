@@ -20,7 +20,7 @@ public class Guide extends AppCompatActivity {
     private Handler handler = new Handler(){
         public void handleMessage(Message msg) {
             if (msg.obj == null){
-                Toast.makeText(Guide.this,"请检查网络",Toast.LENGTH_SHORT);
+                Toast.makeText(Guide.this, R.string.check_network,Toast.LENGTH_SHORT);
             }
             else
                 guide.setText(((String)msg.obj).replace("\\n", "\n"));

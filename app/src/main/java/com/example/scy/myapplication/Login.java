@@ -1,15 +1,12 @@
 package com.example.scy.myapplication;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.util.Base64;
@@ -19,7 +16,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -34,8 +30,6 @@ import java.io.ByteArrayOutputStream;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
 import static com.example.scy.myapplication.NewsService.avator_root;
-
-
 public class Login extends AppCompatActivity {
     private Handler handler = new Handler(){
         @Override
@@ -50,11 +44,10 @@ public class Login extends AppCompatActivity {
                     String token = null;
                     String picurl = null;
                     super.handleMessage(msg);
-
                     JSONObject result = (JSONObject) msg.obj;
                     if (result == null) {
                         pDialog.cancel();
-                        Toast.makeText(Login.this, "连接服务器错误", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Login.this, R.string.server_error, Toast.LENGTH_SHORT).show();
                         if (name.equals("admin") && password.equals("admin")) {       //断网下测试使用
                             editor.putString("userName", name);
                             editor.putString("userPassword", password);
@@ -106,7 +99,7 @@ public class Login extends AppCompatActivity {
                             editor.remove("avator_url");
                             editor.commit();
                             pDialog.cancel();
-                            Toast.makeText(Login.this, "密码错误！", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Login.this, R.string.password_error, Toast.LENGTH_SHORT).show();
                         }
                         if (status == 2) {
                             editor.remove("userName");
@@ -118,7 +111,7 @@ public class Login extends AppCompatActivity {
                             editor.remove("avator_url");
                             editor.commit();
                             pDialog.cancel();
-                            Toast.makeText(Login.this, "不存在该用户名！", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Login.this, R.string.non_existent_name, Toast.LENGTH_SHORT).show();
                         }
                     }
                     break;
@@ -134,10 +127,10 @@ public class Login extends AppCompatActivity {
                     }
                     if (uid == null){
                         pDialog.cancel();
-                        Toast.makeText(Login.this, "连接服务器错误", Toast.LENGTH_SHORT).show();}
+                        Toast.makeText(Login.this, R.string.server_error, Toast.LENGTH_SHORT).show();}
                     else if (uid.equals("0")) {
                         pDialog.cancel();
-                        Toast.makeText(Login.this, "不存在该用户名", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Login.this, R.string.non_existent_name, Toast.LENGTH_SHORT).show();
                     }
                     else{
                         pDialog.cancel();
@@ -151,14 +144,14 @@ public class Login extends AppCompatActivity {
                 case 2:
                     if((int)msg.obj == 1) {
                         pDialog.cancel();
-                        Toast.makeText(Login.this, "登陆成功", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Login.this, R.string.login_success, Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(Login.this, MainActivity.class);
                         startActivity(intent);
                         finish();
                     }
                     else {
                         pDialog.cancel();
-                        Toast.makeText(Login.this, "头像加载失败", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Login.this, R.string.down_avator_fail, Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(Login.this, MainActivity.class);
                         startActivity(intent);
                         finish();
@@ -166,7 +159,7 @@ public class Login extends AppCompatActivity {
             }
         }
     };
-    private Button bt1,bt2,bt3;
+    private Button bt_login,bt_sign_up,bt_forget;
     private CheckBox checkBox;
     private EditText editName, editPassword;
     private SharedPreferences preferences;
@@ -174,13 +167,14 @@ public class Login extends AppCompatActivity {
     private SharedPreferences.Editor editor;
     private ImageView eye;
     private Boolean eyeOpen = false;
+    public int error_time = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        bt1 = (Button)findViewById(R.id.button1);
-        bt2 = (Button)findViewById(R.id.button2);
-        bt3 = (Button)findViewById(R.id.button3);
+        bt_login = (Button)findViewById(R.id.login);
+        bt_sign_up = (Button)findViewById(R.id.sign_up);
+        bt_forget = (Button)findViewById(R.id.forget_pass);
         editName = (EditText)findViewById(R.id.editText1);
         editPassword = (EditText)findViewById(R.id.editText2);
         checkBox = (CheckBox)findViewById(R.id.cb);
@@ -212,21 +206,21 @@ public class Login extends AppCompatActivity {
                 }
             }
         });
-        bt1.setOnClickListener(new View.OnClickListener() {
+        bt_login.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 pDialog = new SweetAlertDialog(Login.this, SweetAlertDialog.PROGRESS_TYPE);
                 pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
-                pDialog.setTitleText("登陆中");
+                pDialog.setTitleText(getString(R.string.loging));
                 pDialog.setCancelable(false);
                 pDialog.show();
                 try {
                     final String name = editName.getText().toString();
                     final String password = editPassword.getText().toString();
                     if(name.length() == 0)
-                        Toast.makeText(Login.this, "用户名不能为空", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Login.this, R.string.name_no_empty, Toast.LENGTH_SHORT).show();
                     else {
                         if (password.length() == 0)
-                            Toast.makeText(Login.this, "密码不能为空", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Login.this, R.string.password_no_empty, Toast.LENGTH_SHORT).show();
                         else {
                             new Thread(new Runnable(){
                                 @Override
@@ -249,7 +243,7 @@ public class Login extends AppCompatActivity {
                 }
             }
         });
-        bt2.setOnClickListener(new View.OnClickListener() {
+        bt_sign_up.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
                 Intent intent = new Intent(Login.this,Sign_up.class);
@@ -257,19 +251,19 @@ public class Login extends AppCompatActivity {
             }
         });
 
-        bt3.setOnClickListener(new View.OnClickListener() {
+        bt_forget.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final android.app.AlertDialog.Builder builder;
                 final EditText et = new EditText(Login.this);
                 builder = new android.app.AlertDialog.Builder(Login.this);
-                builder.setTitle("请输入用户名");
-                builder.setPositiveButton("提交", new DialogInterface.OnClickListener() {
+                builder.setTitle(R.string.enter_name);
+                builder.setPositiveButton(R.string.submit, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         pDialog = new SweetAlertDialog(Login.this, SweetAlertDialog.PROGRESS_TYPE);
                         pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
-                        pDialog.setTitleText("查询中");
+                        pDialog.setTitleText(getString(R.string.searching));
                         pDialog.setCancelable(false);
                         pDialog.show();
                         try {
@@ -293,24 +287,23 @@ public class Login extends AppCompatActivity {
                     }
                 });
                 builder.setView(et);
-                builder.setNegativeButton("取消", null);
+                builder.setNegativeButton(R.string.cancel, null);
                 builder.create().show();
             }
         });
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-    public int error_time = 0;
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
     public void saveBitmapToSharedPreferences(String url){
         if (url == null){
             Message msg = new Message();
@@ -350,6 +343,5 @@ public class Login extends AppCompatActivity {
                 getavator(imageUri);
         }
     });
-
     }
 }

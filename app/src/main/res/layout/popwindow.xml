@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:clickable="false"
             android:gravity="center"
-            android:text="修改头像（大小不要超过1M）"
+            android:text="@string/popwindw_tip"
             android:textColor="#8a8a8a"
             android:textSize="15sp" />
 
@@ -41,7 +41,7 @@
             android:layout_marginTop="20dip"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="拍照"
+            android:text="@string/take_photo"
             android:textStyle="bold"
             />
 
@@ -52,7 +52,7 @@
             android:layout_marginTop="5dip"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="从相册选择"
+            android:text="@string/select_from_files"
             android:textStyle="bold"
             />
 
@@ -64,7 +64,7 @@
             android:layout_marginBottom="15dip"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="取消"
+            android:text="@string/cancel"
             android:textStyle="bold"
 
             />

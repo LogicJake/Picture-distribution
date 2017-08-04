@@ -41,16 +41,8 @@ public class History extends Activity {
         JSONObject jsonObject;
         public void handleMessage(Message msg) {
             switch (msg.what){
-                case 1:
-                    jsonObject = (JSONObject) msg.obj;
-                    if (jsonObject == null) {
-                        Toast.makeText(History.this, "获取历史记录失败", Toast.LENGTH_SHORT).show();
-                        finish();
-                        pDialog.cancel();
-                    }
-                    break;
                 case 0:
-                    if ((int)msg.obj == 10086){
+                    if ((int)msg.obj == 1){
                         if (page-1 == 1)
                             pDialog.cancel();
                         myAdapter.notifyDataSetChanged();// 通知listView刷新数据
@@ -65,15 +57,23 @@ public class History extends Activity {
                         }
                     }
                     break;
+                case 1:
+                    jsonObject = (JSONObject) msg.obj;
+                    if (jsonObject == null) {
+                        Toast.makeText(History.this, R.string.get_his_fail, Toast.LENGTH_SHORT).show();
+                        finish();
+                        pDialog.cancel();
+                    }
+                    break;
                 case 2:
                     if (msg.getData().getBoolean("result"))
                     {
                         Tag_item.setText(msg.getData().getString("tag"));
-                        Toast.makeText(History.this,"修改成功",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(History.this, R.string.modify_success,Toast.LENGTH_SHORT).show();
                     }
                     else
                     {
-                        Toast.makeText(History.this,"修改失败",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(History.this, R.string.modify_fail,Toast.LENGTH_SHORT).show();
                     }
                     break;
             }
@@ -116,7 +116,7 @@ public class History extends Activity {
         GetHistory();
         pDialog = new SweetAlertDialog(History.this, SweetAlertDialog.PROGRESS_TYPE);
         pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
-        pDialog.setTitleText("加载历史记录中");
+        pDialog.setTitleText(getString(R.string.getting_history));
         pDialog.setCancelable(false);
         pDialog.show();
         list.setOnItemClickListener(new OnPlanItemClick());
@@ -157,7 +157,7 @@ public class History extends Activity {
                 ImageLoader.getInstance().displayImage(data.geturl(), img);
                 final AlertDialog.Builder builder = new AlertDialog.Builder(History.this);
                 builder.setView(imgEntryView);
-                builder.setPositiveButton("确认修改", new DialogInterface.OnClickListener() {
+                builder.setPositiveButton(R.string.comfirm_modify, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         try {
@@ -191,11 +191,11 @@ public class History extends Activity {
                         }
                     }
                 });
-                builder.setNegativeButton("取消", null);
+                builder.setNegativeButton(R.string.cancel, null);
                 builder.create().show();
             }
             else
-                Toast.makeText(History.this, "此记录无法修改", Toast.LENGTH_SHORT).show();
+                Toast.makeText(History.this, R.string.not_modify, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -233,7 +233,7 @@ public class History extends Activity {
                                 if (result.getInt("count") == 0){
                                     Message msg = new Message();
                                     msg.what = 0;
-                                    msg.obj = 10086;
+                                    msg.obj = 1;
                                     handler.sendMessage(msg);
                                 }
                                 else {
@@ -249,7 +249,7 @@ public class History extends Activity {
                                                 if (LoadFinshnum == jsonArray.length()) {
                                                     Message msg = new Message();
                                                     msg.what = 0;
-                                                    msg.obj = 10086;
+                                                    msg.obj = 1;
                                                     handler.sendMessage(msg);
                                                 }
                                             }

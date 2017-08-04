@@ -14,7 +14,7 @@
             android:textSize="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tips:密保问题是您修改密码的唯一途径" />
+            android:text="@string/tips" />
 
 
         <Spinner android:id="@+id/q1"
@@ -28,7 +28,7 @@
             android:id="@+id/a1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="请输入问题一答案"
+            android:hint="@string/enter_ans1"
             android:maxLines="1"
             android:singleLine="true"
             android:layout_marginBottom="12dp"/>
@@ -45,7 +45,7 @@
             android:id="@+id/a2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="请输入问题二答案"
+            android:hint="@string/enter_ans2"
             android:singleLine="true"
             android:maxLines="1"
             android:layout_marginBottom="12dp"/>
@@ -60,7 +60,7 @@
             android:id="@+id/a3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="请输入问题三答案"
+            android:hint="@string/enter_ans3"
             android:singleLine="true"
             android:maxLines="1"
             android:layout_marginBottom="12dp"/>
@@ -69,7 +69,7 @@
             android:id="@+id/sure"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="提交" />
+            android:text="@string/submit" />
     </LinearLayout>
 
 </ScrollView>

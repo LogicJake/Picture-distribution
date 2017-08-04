@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:textSize="20dp"
-            android:text="Tips:\n1.每次任务有10张图片需要标识；\n2.您可以跳过不喜欢的图片，我们以后将减少推送此类的图片给您;\n3.每个标记之间用中文逗号隔开；\n4.遇到您喜欢的图片请点击爱心；\n5.为了更准确地给您推送感兴趣的图片，请在个人兴趣中选择您的兴趣领域。"/>
+            android:text="@string/default_text"/>
 
 
         <Button
@@ -33,7 +33,7 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:layout_marginTop="5dp"
-            android:text="打标签" />
+            android:text="@string/task1_name" />
 
         <Button
             android:id="@+id/starttask2"
@@ -42,7 +42,7 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:layout_marginTop="5dp"
-            android:text="判断标签" />
+            android:text="@string/task2_name" />
 
     </LinearLayout>
 </ScrollView>
