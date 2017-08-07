@@ -129,8 +129,6 @@ public class History extends Activity {
                 pg.setVisibility(View.VISIBLE);// 将进度条可见
                 bt.setVisibility(View.GONE);// 按钮不可见
                 GetHistory();
-
-
             }
         });
     }
@@ -142,7 +140,6 @@ public class History extends Activity {
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             final Data data = (Data) parent.getAdapter().getItem(position);
             Tag_item = (TextView) view.findViewById(R.id.text_tags);
-//            System.out.println("tag:"+Tag_item.getText().toString());
             if (data.getStatus() == 0) {    //可修改
                 LayoutInflater inflater = LayoutInflater.from(History.this);
                 View imgEntryView = inflater.inflate(R.layout.dialog_photo_display, null); // 加载自定义的布局文件

@@ -6,6 +6,7 @@ package com.example.scy.myapplication;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -76,6 +77,8 @@ public class MyAdapter extends BaseAdapter implements StickyListHeadersAdapter {
 
             holder.text_tags = (TextView) convertView.findViewById(R.id.text_tags);
 
+            holder.score = (TextView) convertView.findViewById(R.id.score);
+
             convertView.setTag(holder);
         }
         else
@@ -106,6 +109,25 @@ public class MyAdapter extends BaseAdapter implements StickyListHeadersAdapter {
                 holder.text_hour.setText(time.get(Calendar.HOUR_OF_DAY) + ":" + time.get(Calendar.MINUTE));
             }
             holder.text_tags.setText(planDetail.gettags());
+            int status = planDetail.getStatus();
+            if(status == 0)
+            {
+                holder.score.setText("审核中");
+                holder.score.setTextSize(20);
+                holder.score.setTextColor(Color.parseColor("#555555"));
+            }
+            else if(status == 1)
+            {
+                holder.score.setText("+10");
+                holder.score.setTextSize(30);
+                holder.score.setTextColor(Color.parseColor("#228B22"));
+            }
+            else if (status == 2)
+            {
+                holder.score.setText("+0");
+                holder.score.setTextSize(30);
+                holder.score.setTextColor(Color.parseColor("#FF0000"));
+            }
             DisplayImageOptions options=new DisplayImageOptions.Builder()
                     .cacheInMemory(true)
                     .build();
@@ -157,6 +179,8 @@ public class MyAdapter extends BaseAdapter implements StickyListHeadersAdapter {
         TextView text_hour;
 
         TextView text_tags;
+
+        TextView score;
     }
 
     public static Calendar stampTocal(String s){
