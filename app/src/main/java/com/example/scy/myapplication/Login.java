@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -159,7 +160,8 @@ public class Login extends AppCompatActivity {
             }
         }
     };
-    private Button bt_login,bt_sign_up,bt_forget;
+    private Button bt_login,bt_sign_up;
+    private TextView forget;
     private CheckBox checkBox;
     private EditText editName, editPassword;
     private SharedPreferences preferences;
@@ -174,7 +176,7 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         bt_login = (Button)findViewById(R.id.login);
         bt_sign_up = (Button)findViewById(R.id.sign_up);
-        bt_forget = (Button)findViewById(R.id.forget_pass);
+        forget = (TextView) findViewById(R.id.forget_pass);
         editName = (EditText)findViewById(R.id.editText1);
         editPassword = (EditText)findViewById(R.id.editText2);
         checkBox = (CheckBox)findViewById(R.id.cb);
@@ -251,7 +253,7 @@ public class Login extends AppCompatActivity {
             }
         });
 
-        bt_forget.setOnClickListener(new View.OnClickListener() {
+        forget.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final android.app.AlertDialog.Builder builder;
