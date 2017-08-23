@@ -94,7 +94,7 @@ public class MyAdapter extends BaseAdapter implements StickyListHeadersAdapter {
                     holder.text_day.setText("今天");
                     holder.text_hour.setText(time.get(Calendar.HOUR_OF_DAY)+":"+time.get(Calendar.MINUTE));
                 }
-                else {if (time.get(Calendar.DAY_OF_MONTH) + 1 == localtime.get(Calendar.DAY_OF_MONTH)) {
+                else {if (time.get(Calendar.DAY_OF_MONTH) + 1 == (localtime.get(Calendar.DAY_OF_MONTH))) {
                     holder.text_day.setText("昨天");
                     holder.text_hour.setText(time.get(Calendar.HOUR_OF_DAY) + ":" + time.get(Calendar.MINUTE));
                 }
