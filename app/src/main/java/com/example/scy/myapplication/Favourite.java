@@ -101,9 +101,11 @@ public class Favourite extends AppCompatActivity {
                     break;
                 case 1:
                     if (msg.obj == null || (Boolean) msg.obj!=true)
-                        Toast.makeText(Favourite.this,R.string.submit_fail,Toast.LENGTH_SHORT).show();
-                    else
-                        Toast.makeText(Favourite.this,R.string.submit_success,Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Favourite.this, R.string.submit_fail, Toast.LENGTH_SHORT).show();
+                    else {
+                        Toast.makeText(Favourite.this, R.string.submit_success, Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
                     break;
 
             }
